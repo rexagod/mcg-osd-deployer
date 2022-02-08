@@ -29,6 +29,7 @@ import (
 	mcgv1alpha1 "github.com/red-hat-storage/mcg-osd-deployer/api/v1alpha1"
 	"github.com/red-hat-storage/mcg-osd-deployer/templates"
 	"github.com/red-hat-storage/mcg-osd-deployer/utils"
+	ocsv1 "github.com/red-hat-storage/ocs-operator"
 	corev1 "k8s.io/api/core/v1"
 	"k8s.io/apimachinery/pkg/api/errors"
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -443,6 +444,7 @@ func (r *ManagedMCGReconciler) SetupWithManager(mgr ctrl.Manager) error {
 	managedMCGredicates := builder.WithPredicates(
 		predicate.GenerationChangedPredicate{},
 	)
+
 	/*ignoreCreatePredicate := predicate.Funcs{
 		CreateFunc: func(e event.CreateEvent) bool {
 			// Ignore create events as resource created by us
@@ -458,6 +460,8 @@ func (r *ManagedMCGReconciler) SetupWithManager(mgr ctrl.Manager) error {
 		Watches(&source.Kind{Type: &mcgv1alpha1.ManagedMCG{}}, &handler.EnqueueRequestForObject{}).
 		Watches(&source.Kind{Type: &noobaa.NooBaa{}}, &handler.EnqueueRequestForObject{}).
 		Watches(&source.Kind{Type: &odfv1alpha1.StorageSystem{}}, &handler.EnqueueRequestForObject{}).
+		Watches(&source.Kind{Type: &corev1.ConfigMap{}}, &handler.EnqueueRequestForObject{}).
+		Watches(&source.Kind{Type: &ocsv1.StorageCluster{}}, &handler.EnqueueRequestForObject{}).
 		Complete(r)
 }
 

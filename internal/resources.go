@@ -1,4 +1,4 @@
-package utils
+package internal
 
 import (
 	corev1 "k8s.io/api/core/v1"
@@ -6,8 +6,7 @@ import (
 )
 
 var (
-	// DaemonResources map contains the default resource requirements for the
-	// various OCS daemons
+	// DaemonResources map contains the default resource requirements for the various Noobaa components
 	DaemonResources = map[string]corev1.ResourceRequirements{
 		"noobaa-core": {
 			Requests: corev1.ResourceList{

@@ -1,22 +1,7 @@
-/*
-
-
-Licensed under the Apache License, Version 2.0 (the "License");
-you may not use this file except in compliance with the License.
-You may obtain a copy of the License at
-
-    http://www.apache.org/licenses/LICENSE-2.0
-
-Unless required by applicable law or agreed to in writing, software
-distributed under the License is distributed on an "AS IS" BASIS,
-WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-See the License for the specific language governing permissions and
-limitations under the License.
-*/
-
 package templates
 
 import (
+	mcginternal "github.com/red-hat-storage/mcg-osd-deployer/internal"
 	"reflect"
 	"strings"
 
@@ -25,19 +10,18 @@ import (
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 )
 
-// StorageClusterTemplate is the template that serves as the base for the storage clsuter deployed by the operator
+var mcgOsdDeployerNamespace, _ = mcginternal.LookupEnvVar(mcginternal.NamespaceEnvVarKey)
+
+var storageClusterKind = odfv1alpha1.StorageKind(strings.ToLower(reflect.TypeOf(ocsv1.StorageCluster{}).Name()) + "." + ocsv1.GroupVersion.String())
 
 var StorageSystemTemplate = &odfv1alpha1.StorageSystem{
 	ObjectMeta: metav1.ObjectMeta{
-		Name:      "mcg-storagecluster-storagesystem",
-		Namespace: "openshift-storage",
+		Name:      mcginternal.StorageSystemName,
+		Namespace: mcgOsdDeployerNamespace,
 	},
 	Spec: odfv1alpha1.StorageSystemSpec{
-		Name:      "mcg-storagesystem",
-		Namespace: "openshift-storage",
-		Kind:      StorageClusterKind,
+		Name:      mcginternal.StorageSystemName,
+		Namespace: mcgOsdDeployerNamespace,
+		Kind:      storageClusterKind,
 	},
 }
-
-var StorageClusterKind = odfv1alpha1.StorageKind(strings.ToLower(reflect.TypeOf(ocsv1.StorageCluster{}).Name()) +
-	"." + ocsv1.GroupVersion.String())

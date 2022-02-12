@@ -20,27 +20,18 @@ import (
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 )
 
-// ReconcileStrategy represent the action the deployer should take whenever a recncile event occures
+// ReconcileStrategy represent the action the deployer should take whenever a reconcile event occurs
 type ReconcileStrategy string
 
 const (
-	// ReconcileStrategyNone is used to indicate that the deployer should not
-	// touch the storage cluster spec
+	// ReconcileStrategyNone indicates that the deployer should not modify mcg-storagecluster-storagesystem's spec
 	ReconcileStrategyNone ReconcileStrategy = "none"
-
-	// ReconcileStrategyStrict is used to indicate that the deployer should enforce
-	// storage clsuter based on a predefined spec
+	// ReconcileStrategyStrict indicates that the deployer should reconcile mcg-storagecluster-storagesystem's spec
 	ReconcileStrategyStrict ReconcileStrategy = "strict"
 )
 
-// EDIT THIS FILE!  THIS IS SCAFFOLDING FOR YOU TO OWN!
-// NOTE: json tags are required.  Any new fields you add must have json tags for the fields to be serialized.
-
 // ManagedMCGSpec defines the desired state of ManagedMCG
 type ManagedMCGSpec struct {
-	// INSERT ADDITIONAL SPEC FIELDS - desired state of cluster
-	// Important: Run "make" to regenerate code after modifying this file
-
 	ReconcileStrategy ReconcileStrategy `json:"reconcileStrategy,omitempty"`
 }
 
@@ -58,17 +49,11 @@ type ComponentStatus struct {
 }
 
 type ComponentStatusMap struct {
-	//StorageCluster ComponentStatus `json:"StorageCluster"`
-	Noobaa         ComponentStatus `json:"noobaa"`
-	Prometheus     ComponentStatus `json:"prometheus"`
-	Alertmanager   ComponentStatus `json:"alertmanager"`
+	Noobaa ComponentStatus `json:"noobaa"`
 }
 
 // ManagedMCGStatus defines the observed state of ManagedMCG
 type ManagedMCGStatus struct {
-	// INSERT ADDITIONAL STATUS FIELD - define observed state of cluster
-	// Important: Run "make" to regenerate code after modifying this file
-
 	ReconcileStrategy ReconcileStrategy  `json:"reconcileStrategy,omitempty"`
 	Components        ComponentStatusMap `json:"components"`
 }

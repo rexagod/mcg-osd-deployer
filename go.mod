@@ -3,7 +3,7 @@ module github.com/red-hat-storage/mcg-osd-deployer
 go 1.17
 
 require (
-	github.com/go-logr/logr v0.4.0
+	github.com/go-logr/logr v1.2.0
 	github.com/go-openapi/spec v0.19.8
 	github.com/onsi/ginkgo v1.16.5
 	github.com/onsi/gomega v1.19.0
@@ -12,10 +12,10 @@ require (
 	github.com/prometheus-operator/prometheus-operator/pkg/apis/monitoring v0.46.0
 	go.uber.org/zap v1.20.0 // indirect
 	gopkg.in/yaml.v2 v2.4.0
-	k8s.io/api v0.22.2
-	k8s.io/apiextensions-apiserver v0.21.3
-	k8s.io/apimachinery v0.23.0
-	k8s.io/client-go v12.0.0+incompatible
+	k8s.io/api v0.23.5
+	k8s.io/apiextensions-apiserver v0.23.5
+	k8s.io/apimachinery v0.23.5
+	k8s.io/client-go v0.23.5
 	sigs.k8s.io/controller-runtime v0.9.5
 
 )
@@ -35,11 +35,11 @@ require (
 	github.com/cespare/xxhash/v2 v2.1.2 // indirect
 	github.com/davecgh/go-spew v1.1.1 // indirect
 	github.com/emicklei/go-restful v2.10.0+incompatible // indirect
-	github.com/evanphx/json-patch v4.11.0+incompatible // indirect
+	github.com/evanphx/json-patch v4.12.0+incompatible // indirect
 	github.com/form3tech-oss/jwt-go v3.2.5+incompatible // indirect
 	github.com/fsnotify/fsnotify v1.5.1 // indirect
-	github.com/go-logr/zapr v0.4.0 // indirect
-	github.com/go-openapi/jsonpointer v0.19.3 // indirect
+	github.com/go-logr/zapr v1.2.0 // indirect
+	github.com/go-openapi/jsonpointer v0.19.5 // indirect
 	github.com/go-openapi/jsonreference v0.19.3 // indirect
 	github.com/go-openapi/swag v0.19.10 // indirect
 	github.com/gogo/protobuf v1.3.2 // indirect
@@ -62,7 +62,7 @@ require (
 	github.com/pkg/errors v0.9.1 // indirect
 	github.com/prometheus/client_golang v1.11.0 // indirect
 	github.com/prometheus/client_model v0.2.0 // indirect
-	github.com/prometheus/common v0.26.0 // indirect
+	github.com/prometheus/common v0.28.0 // indirect
 	github.com/prometheus/procfs v0.6.0 // indirect
 	github.com/sirupsen/logrus v1.8.1 // indirect
 	github.com/spf13/pflag v1.0.5 // indirect
@@ -81,23 +81,24 @@ require (
 	gopkg.in/inf.v0 v0.9.1 // indirect
 	gopkg.in/tomb.v1 v1.0.0-20141024135613-dd632973f1e7 // indirect
 	gopkg.in/yaml.v3 v3.0.0-20210107192922-496545a6307b // indirect
-	k8s.io/component-base v0.21.3 // indirect
-	k8s.io/klog/v2 v2.9.0 // indirect
-	k8s.io/kube-openapi v0.0.0-20210305001622-591a79e4bda7 // indirect
-	k8s.io/utils v0.0.0-20210930125809-cb0fa318a74b // indirect
-	sigs.k8s.io/structured-merge-diff/v4 v4.1.2 // indirect
-	sigs.k8s.io/yaml v1.2.0 // indirect
+	k8s.io/component-base v0.23.5 // indirect
+	k8s.io/klog/v2 v2.30.0 // indirect
+	k8s.io/kube-openapi v0.0.0-20211115234752-e816edb12b65 // indirect
+	k8s.io/utils v0.0.0-20211116205334-6203023598ed // indirect
+	sigs.k8s.io/structured-merge-diff/v4 v4.2.1 // indirect
+	sigs.k8s.io/yaml v1.3.0 // indirect
 )
 
 require github.com/noobaa/noobaa-operator/v5 v5.10.1
 
 replace (
-	github.com/go-logr/logr => github.com/go-logr/logr v0.4.0
+	//github.com/go-logr/logr => github.com/go-logr/logr v0.4.0
 	github.com/hashicorp/vault => github.com/hashicorp/vault v1.9.3
 	github.com/irifrance/gini => github.com/go-air/gini v1.0.4
 	github.com/kubernetes-incubator/external-storage => github.com/libopenstorage/external-storage v0.20.4-openstorage-rc3 // required by rook v1.7
 	github.com/mikefarah/yaml/v2 => github.com/mikefarah/yq/v4 v4.18.1
-	github.com/openshift/api => github.com/openshift/api v0.0.0-20210430163505-eeaa94b80043
+	github.com/moby/term => github.com/moby/term v0.0.0-20201110203204-bea5bbe245bf // indirect
+	github.com/openshift/api => github.com/openshift/api v0.0.0-20220411210816-c3bb724c282a
 	github.com/portworx/sched-ops => github.com/portworx/sched-ops v0.20.4-openstorage-rc3 // required by rook v1.7
 	k8s.io/api => k8s.io/api v0.21.3
 	k8s.io/apiextensions-apiserver => k8s.io/apiextensions-apiserver v0.20.2
@@ -123,7 +124,34 @@ replace (
 	k8s.io/metrics => k8s.io/metrics v0.20.2
 	k8s.io/mount-utils => k8s.io/mount-utils v0.20.2
 	k8s.io/sample-apiserver => k8s.io/sample-apiserver v0.20.2
-	sigs.k8s.io/controller-runtime => sigs.k8s.io/controller-runtime v0.9.5
+	sigs.k8s.io/controller-runtime => sigs.k8s.io/controller-runtime v0.11.2
 )
 
-exclude github.com/kubernetes-incubator/external-storage v0.20.4-openstorage-rc2
+// https://github.com/rook/rook/blob/master/go.mod#L47-L49
+// This tag doesn't exist, but is imported by github.com/portworx/sched-ops.
+exclude (
+	github.com/kubernetes-incubator/external-storage v0.20.4-openstorage-rc2
+	// Exclude pre-go-mod kubernetes tags, because they are older
+	// than v0.x releases but are picked when updating dependencies.
+	k8s.io/client-go v1.4.0
+	k8s.io/client-go v1.5.0
+	k8s.io/client-go v1.5.1
+	k8s.io/client-go v1.5.2
+	k8s.io/client-go v10.0.0+incompatible
+	k8s.io/client-go v11.0.0+incompatible
+	k8s.io/client-go v11.0.1-0.20190409021438-1a26190bd76a+incompatible
+	k8s.io/client-go v12.0.0+incompatible
+	k8s.io/client-go v2.0.0+incompatible
+	k8s.io/client-go v2.0.0-alpha.1+incompatible
+	k8s.io/client-go v3.0.0+incompatible
+	k8s.io/client-go v3.0.0-beta.0+incompatible
+	k8s.io/client-go v4.0.0+incompatible
+	k8s.io/client-go v4.0.0-beta.0+incompatible
+	k8s.io/client-go v5.0.0+incompatible
+	k8s.io/client-go v5.0.1+incompatible
+	k8s.io/client-go v6.0.0+incompatible
+	k8s.io/client-go v7.0.0+incompatible
+	k8s.io/client-go v8.0.0+incompatible
+	k8s.io/client-go v9.0.0+incompatible
+	k8s.io/client-go v9.0.0-invalid+incompatible
+)

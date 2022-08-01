@@ -75,6 +75,10 @@ e2e-test: generate fmt vet manifests setup-envtest
 manager: generate fmt vet
 	go build -o bin/manager main.go
 
+# Build manager binary
+manager-debug: generate fmt vet
+	go build -gcflags="all=-N -l" -o bin/manager main.go
+
 # Run against the configured Kubernetes cluster in ~/.kube/config
 run: generate fmt vet manifests
 	NAMESPACE=${NAMESPACE} ADDON_NAME=${ADDON_NAME} go run ./main.go

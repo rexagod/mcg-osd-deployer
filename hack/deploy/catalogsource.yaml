@@ -5,7 +5,7 @@ metadata:
   name: mcg-osd-deployer-catalog
   namespace: redhat-data-federation
 spec:
-  image: quay.io/osd-addons/mcg-osd-dev:catalog-console-ci
+  image: quay.io/rexagod/mcg-osd-deployer:catalog-debug
   displayName: CI
   publisher: rexagod
   sourceType: grpc

@@ -53,6 +53,10 @@ spec:
             - --enable-leader-election
           image: controller:latest
           name: manager
+          ports:
+            - containerPort: 9001
+              name: debug
+              protocol: TCP
           resources:
             limits:
               cpu: 100m
@@ -75,5 +79,13 @@ spec:
               value: registry.redhat.io/odf4/mcg-core-rhel8@sha256:4ff2d65ea16dd1026fe278a0f8ca920f300dfcee205b4b8ede0ab28be1aa43a6
             - name: NOOBAA_DB_IMAGE
               value: registry.redhat.io/rhel8/postgresql-12@sha256:be7212e938d1ef314a75aca070c28b6433cd0346704d0d3523c8ef403ff0c69e
+            - name: RHOBS_ENDPOINT
+              value: https://example/receive
+            - name: RH_SSO_TOKEN_ENDPOINT
+              value: https://example.com/token
+            - name: ADDON_VARIANT
+              value: mcg-osd
+            - name: ADDON_ENVIRONMENT
+              value: stage
       terminationGracePeriodSeconds: 10
       serviceAccountName: deployer
